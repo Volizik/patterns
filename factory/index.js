@@ -1,31 +1,32 @@
 class Car {
-  constructor(options) {
-    this.color = options.color || 'white';
-    this.maxSpeed = options.maxSpeed || 300;
+  constructor() {
+    this.color = 'white';
+    this.maxSpeed = 300;
+    this.wheels = 4
   }
 }
 
 class Moto {
-  constructor(options) {
-    this.color = options.color || 'black';
-    this.maxSpeed = options.maxSpeed || 200;
+  constructor() {
+    this.color = 'black';
+    this.maxSpeed = 200;
+    this.wheels = 2
   }
 }
 
 class TransportFactory {
-  createTransport(options) {
-    switch(options.type) {
+  static createTransport(type) {
+    switch(type) {
       case 'Moto':
-        return new Moto(options);
+        return new Moto;
       case 'Car':
-        return new Car(options);
+        return new Car;
     }
   }
 }
 
-const factory = new TransportFactory();
-const moto = factory.createTransport({type: 'Moto'});
-const car = factory.createTransport({type: 'Car'});
+const moto = TransportFactory.createTransport('Moto');
+const car = TransportFactory.createTransport('Car');
 
 console.log(moto);
 console.log(car);
