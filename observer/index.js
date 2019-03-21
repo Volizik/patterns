@@ -39,20 +39,18 @@ class Observer {
 
 }
 
-const mother = new Observer(state => { console.log('Mother', state) });
-const father = new Observer(state => { console.log('Father', state) });
-const child = new Observer(state => { console.log('Child', state) });
+const client1 = new Observer(state => { console.log('Вася', state) });
+const client2 = new Observer(state => { console.log('Петя', state) });
+const client3 = new Observer(state => { console.log('Коля', state) });
 
-const fridge = new Observable();
+const shop = new Observable();
 
-fridge.subscribe(mother);
-fridge.subscribe(father);
-fridge.subscribe(child);
+shop.subscribe(client1);
+shop.subscribe(client2);
+shop.subscribe(client3);
 
-fridge.state = {milk: 1, eggs: 10, soup: '2 liters'};
+shop.state = {adidas: 8, nike: 10};
 
-console.log(fridge.state);
+shop.unsubscribe(client2);
 
-fridge.unsubscribe(father);
-
-fridge.state = {apples: 5};
+shop.state = {puma: 5};
